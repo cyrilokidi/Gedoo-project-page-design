@@ -4,11 +4,6 @@ import {
   AppBar,
   Avatar,
   Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
   Container,
   CssBaseline,
   Grid,
@@ -17,10 +12,11 @@ import {
   Tooltip,
   Typography
 } from "@mui/material";
+import ProjectCard from "./components/ProjectCard";
 
 const theme = createTheme();
 
-export default function App() {
+function AppContent() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -45,29 +41,14 @@ export default function App() {
       <Container component="main">
         <Grid container spacing={2}>
           <Grid item xs={4}>
-            <Card>
-              <CardMedia
-                component="img"
-                height="140"
-                alt="Project image"
-                src="https://random.imagecdn.app/500/150"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Wall construction
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">more</Button>
-              </CardActions>
-            </Card>
+            <ProjectCard />
           </Grid>
         </Grid>
       </Container>
     </ThemeProvider>
   );
+}
+
+export default function App() {
+  return <AppContent />;
 }
