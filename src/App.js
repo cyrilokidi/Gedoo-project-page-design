@@ -13,6 +13,7 @@ import {
   Typography
 } from "@mui/material";
 import ProjectCard from "./components/ProjectCard";
+import TotalProjectStat from "./components/TotalProjectStat";
 
 const theme = createTheme();
 
@@ -41,7 +42,12 @@ function AppContent() {
       <Container component="main">
         <Grid container spacing={2}>
           <Grid item xs={4}>
-            <ProjectCard />
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={4}>
+                <TotalProjectStat />
+              </Grid>
+              <Grid item xs={12}></Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Container>
