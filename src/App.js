@@ -77,7 +77,7 @@ function AppContent() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Container component="main" sx={{ mt: 4, mb: 4 }}>
+      <Container maxWidth="md" component="main" sx={{ mt: 4, mb: 4 }}>
         <Stack spacing={2}>
           <Projects projects={projects} />
         </Stack>
