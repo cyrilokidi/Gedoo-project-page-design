@@ -7,7 +7,8 @@ import {
   Typography,
   AvatarGroup,
   Avatar,
-  Chip
+  Chip,
+  Stack
 } from "@mui/material";
 import {
   DashboardOutlined as DashboardOutlinedIcon,
@@ -25,7 +26,32 @@ function ProjectStakeholders() {
   );
 }
 
-export default function ProjectCard({ title, coverImage, description }) {
+function ProjectStats() {
+  return (
+    <Stack
+      direction="row"
+      spacing={2}
+      sx={{
+        flexGrow: 1
+      }}
+    >
+      <Chip
+        icon={<DashboardOutlinedIcon />}
+        label="36"
+        color="warning"
+        variant="filled"
+      />
+      <Chip
+        icon={<ExtensionOutlinedIcon />}
+        label="4"
+        color="info"
+        variant="filled"
+      />
+    </Stack>
+  );
+}
+
+export default function ProjectCard({ title, description }) {
   return (
     <Card elevation={0} sx={{ borderRadius: 0, boxShadow: 3 }}>
       <CardContent>
@@ -38,19 +64,8 @@ export default function ProjectCard({ title, coverImage, description }) {
       </CardContent>
       <CardActions>
         <ProjectStakeholders />
-        <Chip
-          icon={<DashboardOutlinedIcon />}
-          label="36"
-          color="warning"
-          variant="filled"
-        />
-        <Chip
-          icon={<ExtensionOutlinedIcon />}
-          label="4"
-          color="info"
-          variant="filled"
-        />
-        <Button size="small">more</Button>
+        <ProjectStats />
+        <Button sx={{ ml: 2 }}>more</Button>
       </CardActions>
     </Card>
   );

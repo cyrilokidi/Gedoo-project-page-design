@@ -12,6 +12,7 @@ import {
   Tooltip,
   Typography
 } from "@mui/material";
+import SearchProject from "./components/SearchProject";
 import Projects from "./components/Projects";
 
 const theme = createTheme();
@@ -19,37 +20,31 @@ const theme = createTheme();
 const projects = [
   {
     title: "Wall construction",
-    coverImage: "https://random.imagecdn.app/500/150",
     description:
       "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
   },
   {
     title: "Foundation preparation",
-    coverImage: "https://random.imagecdn.app/500/150",
     description:
       "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
   },
   {
     title: "Ground floor",
-    coverImage: "https://random.imagecdn.app/500/150",
     description:
       "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
   },
   {
     title: "Partitioning",
-    coverImage: "https://random.imagecdn.app/500/150",
     description:
       "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
   },
   {
     title: "Curing",
-    coverImage: "https://random.imagecdn.app/500/150",
     description:
       "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
   },
   {
     title: "Finishing",
-    coverImage: "https://random.imagecdn.app/500/150",
     description:
       "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
   }
@@ -79,6 +74,7 @@ function AppContent() {
       </AppBar>
       <Container maxWidth="md" component="main" sx={{ mt: 4, mb: 4 }}>
         <Stack spacing={2}>
+          <SearchProject />
           <Projects projects={projects} />
         </Stack>
       </Container>
