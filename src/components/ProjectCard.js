@@ -37,13 +37,13 @@ function ProjectStats() {
     >
       <Chip
         icon={<DashboardOutlinedIcon />}
-        label="36"
+        label="6"
         color="warning"
         variant="filled"
       />
       <Chip
         icon={<ExtensionOutlinedIcon />}
-        label="4"
+        label="11"
         color="info"
         variant="filled"
       />
