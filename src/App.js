@@ -7,6 +7,7 @@ import {
   Container,
   CssBaseline,
   IconButton,
+  Pagination,
   Stack,
   Toolbar,
   Tooltip,
@@ -76,6 +77,7 @@ function AppContent() {
         <Stack spacing={2}>
           <SearchProject />
           <Projects projects={projects} />
+          <Pagination count={10} showFirstButton showLastButton />
         </Stack>
       </Container>
     </ThemeProvider>
