@@ -4,6 +4,7 @@ import SearchProject from "./components/SearchProject";
 import Projects from "./components/Projects";
 import ProjectLayout from "./components/ProjectLayout";
 import ProjectHeader from "./components/ProjectHeader";
+import AddProjectDialog from "./components/AddProjectDialog";
 
 const projects = [
   {
@@ -39,11 +40,19 @@ const projects = [
 ];
 
 function AppContent() {
+  const [openAddDialog, setOpenDialog] = React.useState(false);
+  const handleOpenAddDialog = () => setOpenDialog(true);
+  const handleCloseAddDialog = () => setOpenDialog(false);
+
   return (
     <ProjectLayout>
       <Container maxWidth="md" component="main" sx={{ mt: 4, mb: 4 }}>
         <Stack spacing={2}>
-          <ProjectHeader />
+          <AddProjectDialog
+            open={openAddDialog}
+            onClose={handleCloseAddDialog}
+          />
+          <ProjectHeader onOpenAddDialog={handleOpenAddDialog} />
           <SearchProject />
           <Projects projects={projects} />
           <Pagination count={10} showFirstButton showLastButton />
