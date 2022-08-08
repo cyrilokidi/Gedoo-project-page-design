@@ -9,12 +9,7 @@ import { projects } from "./data";
 import { useApp } from "./hooks/useApp";
 
 function AppContent() {
-  const {
-    openAddDialog,
-    handleOpenAddDialog,
-    handleCloseAddDialog,
-    formik
-  } = useApp();
+  const { openAddDialog, handleOpenAddDialog, handleCloseAddDialog } = useApp();
 
   return (
     <ProjectLayout>
@@ -23,7 +18,6 @@ function AppContent() {
           <AddProjectDialog
             open={openAddDialog}
             onClose={handleCloseAddDialog}
-            formik={formik}
           />
           <ProjectHeader onOpenAddDialog={handleOpenAddDialog} />
           <SearchProject />
