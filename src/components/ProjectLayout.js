@@ -11,7 +11,11 @@ import {
   Typography
 } from "@mui/material";
 
-const theme = createTheme();
+const theme = createTheme({
+  shape: {
+    borderRadius: 0
+  }
+});
 
 export default function ProjectLayout({ children }) {
   return (

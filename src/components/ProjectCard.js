@@ -53,7 +53,7 @@ function ProjectStats() {
 
 export default function ProjectCard({ title, description }) {
   return (
-    <Card elevation={0} sx={{ borderRadius: 0, boxShadow: 3 }}>
+    <Card sx={{ boxShadow: 3 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {title}
