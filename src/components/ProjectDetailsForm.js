@@ -1,11 +1,25 @@
 import { Box, Button, Grid, TextField } from "@mui/material";
 
-export default function ProjectDetailsForm({ activeStep, onSubmit }) {
+export default function ProjectDetailsForm({ formik }) {
   return (
-    <form>
+    <Box
+      component="form"
+      noValidate
+      sx={{ mt: 3 }}
+      onSubmit={formik.handleSubmit}
+    >
       <Grid container spacing={2}>
         <Grid item xs={12} md={12} lg={12}>
-          <TextField fullWidth id="name" name="name" placeholder="Name" />
+          <TextField
+            fullWidth
+            id="name"
+            name="name"
+            placeholder="Name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name}
+          />
         </Grid>
         <Grid item xs={12} md={12} lg={12}>
           <TextField
@@ -15,14 +29,20 @@ export default function ProjectDetailsForm({ activeStep, onSubmit }) {
             name="description"
             placeholder="Description"
             rows={4}
+            value={formik.values.description}
+            onChange={formik.handleChange}
+            error={
+              formik.touched.description && Boolean(formik.errors.description)
+            }
+            helperText={formik.touched.description && formik.errors.description}
           />
         </Grid>
       </Grid>
       <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-        <Button onClick={onSubmit} fullWidth variant="contained">
+        <Button type="submit" fullWidth variant="contained">
           save
         </Button>
       </Box>
-    </form>
+    </Box>
   );
 }

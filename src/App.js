@@ -5,44 +5,16 @@ import Projects from "./components/Projects";
 import ProjectLayout from "./components/ProjectLayout";
 import ProjectHeader from "./components/ProjectHeader";
 import AddProjectDialog from "./components/AddProjectDialog";
-
-const projects = [
-  {
-    title: "Wall construction",
-    description:
-      "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
-  },
-  {
-    title: "Foundation preparation",
-    description:
-      "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
-  },
-  {
-    title: "Ground floor",
-    description:
-      "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
-  },
-  {
-    title: "Partitioning",
-    description:
-      "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
-  },
-  {
-    title: "Curing",
-    description:
-      "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
-  },
-  {
-    title: "Finishing",
-    description:
-      "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
-  }
-];
+import { projects } from "./data";
+import { useApp } from "./hooks/useApp";
 
 function AppContent() {
-  const [openAddDialog, setOpenDialog] = React.useState(false);
-  const handleOpenAddDialog = () => setOpenDialog(true);
-  const handleCloseAddDialog = () => setOpenDialog(false);
+  const {
+    openAddDialog,
+    handleOpenAddDialog,
+    handleCloseAddDialog,
+    formik
+  } = useApp();
 
   return (
     <ProjectLayout>
@@ -51,6 +23,7 @@ function AppContent() {
           <AddProjectDialog
             open={openAddDialog}
             onClose={handleCloseAddDialog}
+            formik={formik}
           />
           <ProjectHeader onOpenAddDialog={handleOpenAddDialog} />
           <SearchProject />

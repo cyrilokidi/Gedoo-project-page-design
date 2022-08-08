@@ -13,7 +13,7 @@ import ProjectDetailsForm from "./ProjectDetailsForm";
 
 const steps = ["Details", "Stakeholders", "Review"];
 
-export default function BasicModal({ open, onClose }) {
+export default function BasicModal({ open, onClose, formik }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
@@ -62,7 +62,7 @@ export default function BasicModal({ open, onClose }) {
   const renderStep = (activeStep) => {
     switch (activeStep) {
       case 0:
-        return <ProjectDetailsForm />;
+        return <ProjectDetailsForm formik={formik} />;
 
       default:
         return <>No step selected</>;
