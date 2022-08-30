@@ -1,34 +1,33 @@
+import { ThemeProvider } from "@emotion/react";
+import { createTheme, CssBaseline } from "@mui/material";
 import * as React from "react";
-import { Container, Pagination, Stack } from "@mui/material";
-import SearchProject from "./components/SearchProject";
-import Projects from "./components/Projects";
-import ProjectLayout from "./components/ProjectLayout";
-import ProjectHeader from "./components/ProjectHeader";
-import AddProjectDialog from "./components/AddProjectDialog";
-import { projects } from "./data";
-import { useApp } from "./hooks/useApp";
+import Projects from "./Projects";
 
-function AppContent() {
-  const { openAddDialog, handleOpenAddDialog, handleCloseAddDialog } = useApp();
-
-  return (
-    <ProjectLayout>
-      <Container maxWidth="md" component="main" sx={{ mt: 4, mb: 4 }}>
-        <Stack spacing={2}>
-          <AddProjectDialog
-            open={openAddDialog}
-            onClose={handleCloseAddDialog}
-          />
-          <ProjectHeader onOpenAddDialog={handleOpenAddDialog} />
-          <SearchProject />
-          <Projects projects={projects} />
-          <Pagination count={10} showFirstButton showLastButton />
-        </Stack>
-      </Container>
-    </ProjectLayout>
-  );
-}
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: "#ffd44f",
+      main: "#fca311",
+      dark: "#c37400",
+      contrastText: "#000"
+    },
+    secondary: {
+      light: "#3e4868",
+      main: "#14213d",
+      dark: "#000018",
+      contrastText: "#fff"
+    }
+  },
+  typography: {
+    fontFamily: "'Montserrat', sans-serif"
+  }
+});
 
 export default function App() {
-  return <AppContent />;
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Projects />
+    </ThemeProvider>
+  );
 }

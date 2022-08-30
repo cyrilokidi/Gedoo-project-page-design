@@ -1,26 +1,17 @@
-import * as React from "react";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React, { Fragment } from "react";
 import {
   AppBar,
   Avatar,
   Box,
-  CssBaseline,
   IconButton,
   Toolbar,
   Tooltip,
   Typography
 } from "@mui/material";
 
-const theme = createTheme({
-  shape: {
-    borderRadius: 0
-  }
-});
-
 export default function ProjectLayout({ children }) {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <Fragment>
       <AppBar position="relative">
         <Toolbar>
           <Typography
@@ -40,6 +31,6 @@ export default function ProjectLayout({ children }) {
         </Toolbar>
       </AppBar>
       {children}
-    </ThemeProvider>
+    </Fragment>
   );
 }

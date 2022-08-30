@@ -1,12 +1,12 @@
 import { Grid } from "@mui/material";
-import ProjectCard from "./ProjectCard";
+import Project from "./Project";
 
-export default function Projects({ projects }) {
+export default function ListProjects({ projects }) {
   return (
     <Grid container rowSpacing={2}>
       {projects.map(({ title, description }) => (
         <Grid item sm={12}>
-          <ProjectCard key={title} title={title} description={description} />
+          <Project key={title} title={title} description={description} />
         </Grid>
       ))}
     </Grid>
