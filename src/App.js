@@ -2,6 +2,7 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme, CssBaseline } from "@mui/material";
 import * as React from "react";
 import Projects from "./Projects";
+import Project from "./Project";
 
 const theme = createTheme({
   palette: {
@@ -27,7 +28,8 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Projects />
+      {/* <Projects /> */}
+      <Project />
     </ThemeProvider>
   );
 }

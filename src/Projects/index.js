@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Container, Pagination, Stack } from "@mui/material";
-import SearchProject from "../components/SearchProject";
+import SearchProject from "./SearchProject";
 import ListProjects from "./ListProjects";
-import ProjectLayout from "../components/ProjectLayout";
-import ProjectHeader from "../components/ProjectHeader";
-import AddProjectDialog from "../components/AddProjectDialog";
+import ProjectLayout from "./ProjectLayout";
+import ProjectHeader from "./ProjectHeader";
+import AddProjectDialog from "./AddProjectDialog";
 import { projects } from "../data";
 import { useApp } from "../hooks/useApp";
 
