@@ -14,7 +14,12 @@ import {
   Container,
   ListItemButton,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  Grid,
+  Card,
+  CardContent,
+  Stack,
+  Button
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -22,8 +27,17 @@ import {
   Notifications as NotificationsIcon,
   DashboardOutlined as DashboardOutlinedIcon,
   HandymanOutlined as HandymanOutlinedIcon,
-  PeopleOutlined as PeopleOutlinedIcon
+  PeopleOutlined as PeopleOutlinedIcon,
+  TaskAltOutlined as TaskAltOutlinedIcon,
+  AddOutlined as AddOutlinedIcon,
+  EditOutlined as EditOutlinedIcon
 } from "@mui/icons-material";
+
+const activities = [
+  { name: "Prepare foundation" },
+  { name: "Erect first half of wall" },
+  { name: "Erect second half of wall" }
+];
 
 const mainListItems = (
   <React.Fragment>
@@ -112,6 +126,62 @@ const Drawer = styled(MuiDrawer, {
   }
 }));
 
+function Activity({ name }) {
+  return (
+    <Card>
+      <CardContent>
+        <Box sx={(theme) => ({ mb: theme.spacing(2) })}>
+          <Typography variant="body2" color="text.secondary">
+            {name}
+          </Typography>
+        </Box>
+        <Stack direction="row">
+          <Stack direction="row" sx={{ flexGrow: 1 }}>
+            <Badge badgeContent={12} color="primary">
+              <TaskAltOutlinedIcon color="action" />
+            </Badge>
+          </Stack>
+          <Button sx={{ ml: 2 }}>more</Button>
+        </Stack>
+      </CardContent>
+    </Card>
+  );
+}
+
+function ActivitiesHeader() {
+  return (
+    <Stack spacing={2}>
+      <Stack direction="row">
+        <Typography component="h4" variant="h5" sx={{ flexGrow: 1 }}>
+          Activities
+        </Typography>
+        <Button
+          variant="contained"
+          startIcon={<AddOutlinedIcon />}
+          onClick={() => console.log("Add activity")}
+        >
+          add activity
+        </Button>
+      </Stack>
+      <Typography color="text.secondary" sx={{ flex: 1 }}>
+        58 total activities
+      </Typography>
+    </Stack>
+  );
+}
+
+function ListActivities({ activities }) {
+  return (
+    <Grid container rowSpacing={2}>
+      {activities.map(({ name }, i) => (
+        <Grid key={i} item sm={12}>
+          <Activity name={name} />
+        </Grid>
+      ))}
+    </Grid>
+  );
+}
+
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
@@ -184,6 +254,41 @@ function DashboardContent() {
       >
         <Toolbar />
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Card>
+                <CardContent>
+                  <Box sx={(theme) => ({ mb: theme.spacing(2) })}>
+                    <Typography gutterBottom variant="h5" component="div">
+                      Wall construction
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Home compound perimeter wall construction
+                    </Typography>
+                  </Box>
+                  <Stack direction="row">
+                    <Stack direction="row" sx={{ flexGrow: 1 }}>
+                      <Typography color="text.secondary">
+                        15 March, 2019
+                      </Typography>
+                    </Stack>
+                    <Button startIcon={<EditOutlinedIcon />} sx={{ ml: 2 }}>
+                      edit
+                    </Button>
+                  </Stack>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} md={6} lg={8}>
+              <Stack spacing={2}>
+                <ActivitiesHeader />
+                <ListActivities activities={activities} />
+              </Stack>
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              Activity tasks
+            </Grid>
+          </Grid>
           <Copyright sx={{ pt: 4 }} />
         </Container>
       </Box>
