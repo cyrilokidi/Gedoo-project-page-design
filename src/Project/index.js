@@ -19,7 +19,8 @@ import {
   Card,
   CardContent,
   Stack,
-  Button
+  Button,
+  Paper
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -126,25 +127,26 @@ const Drawer = styled(MuiDrawer, {
   }
 }));
 
-function Activity({ name }) {
+function ProjectDetails() {
   return (
-    <Card>
-      <CardContent>
-        <Box sx={(theme) => ({ mb: theme.spacing(2) })}>
-          <Typography variant="body2" color="text.secondary">
-            {name}
-          </Typography>
-        </Box>
-        <Stack direction="row">
-          <Stack direction="row" sx={{ flexGrow: 1 }}>
-            <Badge badgeContent={12} color="primary">
-              <TaskAltOutlinedIcon color="action" />
-            </Badge>
-          </Stack>
-          <Button sx={{ ml: 2 }}>more</Button>
+    <Paper sx={(theme) => ({ p: theme.spacing(2) })}>
+      <Box sx={(theme) => ({ mb: theme.spacing(2) })}>
+        <Typography gutterBottom variant="h5" component="div">
+          Wall construction
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Home compound perimeter wall construction
+        </Typography>
+      </Box>
+      <Stack direction="row">
+        <Stack direction="row" sx={{ flexGrow: 1 }}>
+          <Typography color="text.secondary">15 March, 2019</Typography>
         </Stack>
-      </CardContent>
-    </Card>
+        <Button startIcon={<EditOutlinedIcon />} sx={{ ml: 2 }}>
+          edit
+        </Button>
+      </Stack>
+    </Paper>
   );
 }
 
@@ -167,6 +169,28 @@ function ActivitiesHeader() {
         58 total activities
       </Typography>
     </Stack>
+  );
+}
+
+function Activity({ name }) {
+  return (
+    <Card>
+      <CardContent>
+        <Box sx={(theme) => ({ mb: theme.spacing(2) })}>
+          <Typography variant="body2" color="text.secondary">
+            {name}
+          </Typography>
+        </Box>
+        <Stack direction="row">
+          <Stack direction="row" sx={{ flexGrow: 1 }}>
+            <Badge badgeContent={12} color="primary">
+              <TaskAltOutlinedIcon color="action" />
+            </Badge>
+          </Stack>
+          <Button sx={{ ml: 2 }}>more</Button>
+        </Stack>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -256,28 +280,7 @@ function DashboardContent() {
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Card>
-                <CardContent>
-                  <Box sx={(theme) => ({ mb: theme.spacing(2) })}>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Wall construction
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Home compound perimeter wall construction
-                    </Typography>
-                  </Box>
-                  <Stack direction="row">
-                    <Stack direction="row" sx={{ flexGrow: 1 }}>
-                      <Typography color="text.secondary">
-                        15 March, 2019
-                      </Typography>
-                    </Stack>
-                    <Button startIcon={<EditOutlinedIcon />} sx={{ ml: 2 }}>
-                      edit
-                    </Button>
-                  </Stack>
-                </CardContent>
-              </Card>
+              <ProjectDetails />
             </Grid>
             <Grid item xs={12} md={6} lg={8}>
               <Stack spacing={2}>
