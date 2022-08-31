@@ -16,8 +16,6 @@ import {
   ListItemIcon,
   ListItemText,
   Grid,
-  Card,
-  CardContent,
   Stack,
   Button,
   Paper
@@ -127,29 +125,6 @@ const Drawer = styled(MuiDrawer, {
   }
 }));
 
-function ProjectDetails() {
-  return (
-    <Paper sx={(theme) => ({ p: theme.spacing(2) })}>
-      <Box sx={(theme) => ({ mb: theme.spacing(2) })}>
-        <Typography gutterBottom variant="h5" component="div">
-          Wall construction
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Home compound perimeter wall construction
-        </Typography>
-      </Box>
-      <Stack direction="row">
-        <Stack direction="row" sx={{ flexGrow: 1 }}>
-          <Typography color="text.secondary">15 March, 2019</Typography>
-        </Stack>
-        <Button startIcon={<EditOutlinedIcon />} sx={{ ml: 2 }}>
-          edit
-        </Button>
-      </Stack>
-    </Paper>
-  );
-}
-
 function ActivitiesHeader() {
   return (
     <Stack spacing={2}>
@@ -166,7 +141,7 @@ function ActivitiesHeader() {
         </Button>
       </Stack>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
-        58 total activities
+        12 total activities
       </Typography>
     </Stack>
   );
@@ -174,23 +149,27 @@ function ActivitiesHeader() {
 
 function Activity({ name }) {
   return (
-    <Card>
-      <CardContent>
-        <Box sx={(theme) => ({ mb: theme.spacing(2) })}>
-          <Typography variant="body2" color="text.secondary">
-            {name}
-          </Typography>
-        </Box>
-        <Stack direction="row">
-          <Stack direction="row" sx={{ flexGrow: 1 }}>
-            <Badge badgeContent={12} color="primary">
-              <TaskAltOutlinedIcon color="action" />
-            </Badge>
-          </Stack>
-          <Button sx={{ ml: 2 }}>more</Button>
+    <Paper
+      sx={(theme) => ({
+        p: theme.spacing(2),
+        display: "flex",
+        flexDirection: "column"
+      })}
+    >
+      <Box sx={(theme) => ({ mb: theme.spacing(2) })}>
+        <Typography variant="body2" color="text.secondary">
+          {name}
+        </Typography>
+      </Box>
+      <Stack direction="row">
+        <Stack direction="row" sx={{ flexGrow: 1 }}>
+          <Badge badgeContent={12} color="primary">
+            <TaskAltOutlinedIcon color="action" />
+          </Badge>
         </Stack>
-      </CardContent>
-    </Card>
+        <Button sx={{ ml: 2 }}>view</Button>
+      </Stack>
+    </Paper>
   );
 }
 
@@ -203,6 +182,54 @@ function ListActivities({ activities }) {
         </Grid>
       ))}
     </Grid>
+  );
+}
+
+function ActivityDetails(params) {
+  return (
+    <Paper
+      sx={(theme) => ({
+        p: theme.spacing(2),
+        display: "flex",
+        flexDirection: "column"
+      })}
+    >
+      <Box sx={(theme) => ({ mb: theme.spacing(2) })}>
+        <Typography gutterBottom variant="h5" component="div">
+          Prepare foundation
+        </Typography>
+      </Box>
+      <Stack direction="row">
+        <Stack direction="row" sx={{ flexGrow: 1 }}>
+          <Typography color="text.secondary">15 March, 2019</Typography>
+        </Stack>
+        <Button startIcon={<EditOutlinedIcon />} sx={{ ml: 2 }}>
+          edit
+        </Button>
+      </Stack>
+    </Paper>
+  );
+}
+
+function TasksHeader() {
+  return (
+    <Stack spacing={1}>
+      <Stack direction="row">
+        <Typography component="h4" variant="h5" sx={{ flexGrow: 1 }}>
+          Tasks
+        </Typography>
+        <Button
+          variant="contained"
+          startIcon={<AddOutlinedIcon />}
+          onClick={() => console.log("Add activity")}
+        >
+          add task
+        </Button>
+      </Stack>
+      <Typography color="text.secondary" sx={{ flex: 1 }}>
+        22 total tasks
+      </Typography>
+    </Stack>
   );
 }
 
@@ -279,17 +306,17 @@ function DashboardContent() {
         <Toolbar />
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <ProjectDetails />
-            </Grid>
-            <Grid item xs={12} md={6} lg={8}>
+            <Grid item xs={12} md={4} lg={4}>
               <Stack spacing={2}>
                 <ActivitiesHeader />
                 <ListActivities activities={activities} />
               </Stack>
             </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              Activity tasks
+            <Grid item xs={12} md={8} lg={8}>
+              <Stack spacing={2}>
+                <ActivityDetails />
+                <TasksHeader />
+              </Stack>
             </Grid>
           </Grid>
           <Copyright sx={{ pt: 4 }} />
