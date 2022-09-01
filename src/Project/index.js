@@ -18,7 +18,9 @@ import {
   Grid,
   Stack,
   Button,
-  Paper
+  Paper,
+  FormControlLabel,
+  Switch
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -29,13 +31,20 @@ import {
   PeopleOutlined as PeopleOutlinedIcon,
   TaskAltOutlined as TaskAltOutlinedIcon,
   AddOutlined as AddOutlinedIcon,
-  EditOutlined as EditOutlinedIcon
+  EditOutlined as EditOutlinedIcon,
+  DeleteOutlined as DeleteOutlinedIcon
 } from "@mui/icons-material";
 
 const activities = [
   { name: "Prepare foundation" },
   { name: "Erect first half of wall" },
   { name: "Erect second half of wall" }
+];
+
+const tasks = [
+  { name: "Dig foundation" },
+  { name: "Lay base metals" },
+  { name: "Fill ballast and cement mixture" }
 ];
 
 const mainListItems = (
@@ -203,9 +212,18 @@ function ActivityDetails(params) {
         <Stack direction="row" sx={{ flexGrow: 1 }}>
           <Typography color="text.secondary">15 March, 2019</Typography>
         </Stack>
-        <Button startIcon={<EditOutlinedIcon />} sx={{ ml: 2 }}>
-          edit
-        </Button>
+        <Stack direction="row" spacing={2}>
+          <Button
+            startIcon={<DeleteOutlinedIcon />}
+            color="error"
+            sx={{ ml: 2 }}
+          >
+            delete
+          </Button>
+          <Button startIcon={<EditOutlinedIcon />} sx={{ ml: 2 }}>
+            edit
+          </Button>
+        </Stack>
       </Stack>
     </Paper>
   );
@@ -229,6 +247,54 @@ function TasksHeader() {
       <Typography color="text.secondary" sx={{ flex: 1 }}>
         22 total tasks
       </Typography>
+    </Stack>
+  );
+}
+
+function Task({ name }) {
+  return (
+    <Paper
+      sx={(theme) => ({
+        p: theme.spacing(2),
+        display: "flex",
+        flexDirection: "column"
+      })}
+    >
+      <Box sx={(theme) => ({ mb: theme.spacing(2) })}>
+        <Typography variant="body2" color="text.secondary">
+          {name}
+        </Typography>
+      </Box>
+      <Stack direction="row">
+        <Stack direction="row" sx={{ flexGrow: 1 }}>
+          <FormControlLabel
+            control={<Switch color="success" />}
+            label="Completed"
+          />
+        </Stack>
+        <Stack direction="row" spacing={2}>
+          <Button
+            startIcon={<DeleteOutlinedIcon />}
+            color="error"
+            sx={{ ml: 2 }}
+          >
+            delete
+          </Button>
+          <Button startIcon={<EditOutlinedIcon />} sx={{ ml: 2 }}>
+            edit
+          </Button>
+        </Stack>
+      </Stack>
+    </Paper>
+  );
+}
+
+function ListTasks({ tasks }) {
+  return (
+    <Stack spacing={2}>
+      {tasks.map(({ name }, i) => (
+        <Task key={i} name={name} />
+      ))}
     </Stack>
   );
 }
@@ -316,6 +382,7 @@ function DashboardContent() {
               <Stack spacing={2}>
                 <ActivityDetails />
                 <TasksHeader />
+                <ListTasks tasks={tasks} />
               </Stack>
             </Grid>
           </Grid>
