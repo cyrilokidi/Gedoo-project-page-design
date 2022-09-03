@@ -20,7 +20,8 @@ import {
   Button,
   Paper,
   FormControlLabel,
-  Switch
+  Switch,
+  LinearProgress
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -194,7 +195,7 @@ function ListActivities({ activities }) {
   );
 }
 
-function ActivityDetails(params) {
+function ActivityDetails() {
   return (
     <Paper
       sx={(theme) => ({
@@ -207,10 +208,11 @@ function ActivityDetails(params) {
         <Typography component="h4" variant="h5" color="text.secondary">
           Prepare foundation
         </Typography>
+        <Typography color="text.secondary">15 March, 2019</Typography>
       </Box>
       <Stack direction="row">
         <Stack direction="row" sx={{ flexGrow: 1 }}>
-          <Typography color="text.secondary">15 March, 2019</Typography>
+          <Box sx={{ width: "100%" }}>{/**Activity status */}</Box>
         </Stack>
         <Stack direction="row" spacing={2}>
           <IconButton aria-label="delete" color="error">
@@ -222,6 +224,21 @@ function ActivityDetails(params) {
         </Stack>
       </Stack>
     </Paper>
+  );
+}
+
+function LinearProgressWithLabel(props) {
+  return (
+    <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box sx={{ width: "100%", mr: 1 }}>
+        <LinearProgress variant="determinate" {...props} />
+      </Box>
+      <Box sx={{ minWidth: 35 }}>
+        <Typography variant="body2" color="text.secondary">{`${Math.round(
+          props.value
+        )}%`}</Typography>
+      </Box>
+    </Box>
   );
 }
 
@@ -240,9 +257,7 @@ function TasksHeader() {
           add task
         </Button>
       </Stack>
-      <Typography color="text.secondary" sx={{ flex: 1 }}>
-        22 total tasks
-      </Typography>
+      <LinearProgressWithLabel color="success" value={75} />
     </Stack>
   );
 }
