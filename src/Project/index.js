@@ -21,7 +21,8 @@ import {
   Paper,
   FormControlLabel,
   Switch,
-  LinearProgress
+  LinearProgress,
+  Chip
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -173,9 +174,7 @@ function Activity({ name }) {
       </Box>
       <Stack direction="row">
         <Stack direction="row" sx={{ flexGrow: 1 }}>
-          <Badge badgeContent={12} color="primary">
-            <TaskAltOutlinedIcon color="action" />
-          </Badge>
+          <Chip avatar={<TaskAltOutlinedIcon />} label="12" />
         </Stack>
         <Button sx={{ ml: 2 }}>view</Button>
       </Stack>
@@ -212,7 +211,7 @@ function ActivityDetails() {
       </Box>
       <Stack direction="row">
         <Stack direction="row" sx={{ flexGrow: 1 }}>
-          <Box sx={{ width: "100%" }}>{/**Activity status */}</Box>
+          {/**Activity status */}
         </Stack>
         <Stack direction="row" spacing={2}>
           <IconButton aria-label="delete" color="error">
@@ -256,6 +255,11 @@ function TasksHeader() {
         >
           add task
         </Button>
+      </Stack>
+      <Stack direction="row">
+        <Box sx={{ width: "100%" }}>
+          <Chip avatar={<TaskAltOutlinedIcon />} label="12" />
+        </Box>
       </Stack>
       <LinearProgressWithLabel color="success" value={75} />
     </Stack>
