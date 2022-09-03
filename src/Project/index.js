@@ -204,7 +204,7 @@ function ActivityDetails(params) {
       })}
     >
       <Box sx={(theme) => ({ mb: theme.spacing(2) })}>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography component="h4" variant="h5" color="text.secondary">
           Prepare foundation
         </Typography>
       </Box>
@@ -213,16 +213,12 @@ function ActivityDetails(params) {
           <Typography color="text.secondary">15 March, 2019</Typography>
         </Stack>
         <Stack direction="row" spacing={2}>
-          <Button
-            startIcon={<DeleteOutlinedIcon />}
-            color="error"
-            sx={{ ml: 2 }}
-          >
-            delete
-          </Button>
-          <Button startIcon={<EditOutlinedIcon />} sx={{ ml: 2 }}>
-            edit
-          </Button>
+          <IconButton aria-label="delete" color="error">
+            <DeleteOutlinedIcon />
+          </IconButton>
+          <IconButton aria-label="edit">
+            <EditOutlinedIcon />
+          </IconButton>
         </Stack>
       </Stack>
     </Paper>
