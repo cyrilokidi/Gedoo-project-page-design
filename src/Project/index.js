@@ -273,16 +273,12 @@ function Task({ name }) {
           />
         </Stack>
         <Stack direction="row" spacing={2}>
-          <Button
-            startIcon={<DeleteOutlinedIcon />}
-            color="error"
-            sx={{ ml: 2 }}
-          >
-            delete
-          </Button>
-          <Button startIcon={<EditOutlinedIcon />} sx={{ ml: 2 }}>
-            edit
-          </Button>
+          <IconButton aria-label="delete" color="error">
+            <DeleteOutlinedIcon />
+          </IconButton>
+          <IconButton aria-label="edit">
+            <EditOutlinedIcon />
+          </IconButton>
         </Stack>
       </Stack>
     </Paper>
