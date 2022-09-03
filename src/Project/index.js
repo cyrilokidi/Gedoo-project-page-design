@@ -31,6 +31,7 @@ import {
   DashboardOutlined as DashboardOutlinedIcon,
   HandymanOutlined as HandymanOutlinedIcon,
   PeopleOutlined as PeopleOutlinedIcon,
+  InsertChartOutlined as InsertChartOutlinedIcon,
   TaskAltOutlined as TaskAltOutlinedIcon,
   AddOutlined as AddOutlinedIcon,
   EditOutlined as EditOutlinedIcon,
@@ -151,9 +152,11 @@ function ActivitiesHeader() {
           add activity
         </Button>
       </Stack>
-      <Typography color="text.secondary" sx={{ flex: 1 }}>
-        12 total activities
-      </Typography>
+      <Stack direction="row" spacing={1}>
+        <Box sx={{ width: "100%" }}>
+          <Chip avatar={<InsertChartOutlinedIcon />} label="3" />
+        </Box>
+      </Stack>
     </Stack>
   );
 }
@@ -258,7 +261,7 @@ function TasksHeader() {
       </Stack>
       <Stack direction="row">
         <Box sx={{ width: "100%" }}>
-          <Chip avatar={<TaskAltOutlinedIcon />} label="12" />
+          <Chip avatar={<InsertChartOutlinedIcon />} label="12" />
         </Box>
       </Stack>
       <LinearProgressWithLabel color="success" value={75} />
