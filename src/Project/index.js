@@ -21,8 +21,9 @@ import {
   Paper,
   FormControlLabel,
   Switch,
-  LinearProgress,
-  Chip
+  Chip,
+  TextField,
+  InputAdornment
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -33,9 +34,11 @@ import {
   PeopleOutlined as PeopleOutlinedIcon,
   InsertChartOutlined as InsertChartOutlinedIcon,
   TaskAltOutlined as TaskAltOutlinedIcon,
+  UnpublishedOutlined as UnpublishedOutlinedIcon,
   AddOutlined as AddOutlinedIcon,
   EditOutlined as EditOutlinedIcon,
-  DeleteOutlined as DeleteOutlinedIcon
+  DeleteOutlined as DeleteOutlinedIcon,
+  SearchOutlined as SearchOutlinedIcon
 } from "@mui/icons-material";
 
 const activities = [
@@ -152,10 +155,19 @@ function ActivitiesHeader() {
           add activity
         </Button>
       </Stack>
+      <TextField
+        placeholder="Search activity"
+        fullWidth
+        InputProps={{
+          endAdornment: (
+            <InputAdornment>
+              <SearchOutlinedIcon />
+            </InputAdornment>
+          )
+        }}
+      />
       <Stack direction="row" spacing={1}>
-        <Box sx={{ width: "100%" }}>
-          <Chip avatar={<InsertChartOutlinedIcon />} label="3" />
-        </Box>
+        <Chip avatar={<InsertChartOutlinedIcon />} label="3" />
       </Stack>
     </Stack>
   );
@@ -229,24 +241,9 @@ function ActivityDetails() {
   );
 }
 
-function LinearProgressWithLabel(props) {
-  return (
-    <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Box sx={{ width: "100%", mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} />
-      </Box>
-      <Box sx={{ minWidth: 35 }}>
-        <Typography variant="body2" color="text.secondary">{`${Math.round(
-          props.value
-        )}%`}</Typography>
-      </Box>
-    </Box>
-  );
-}
-
 function TasksHeader() {
   return (
-    <Stack spacing={1}>
+    <Stack rowGap={2}>
       <Stack direction="row">
         <Typography component="h4" variant="h5" sx={{ flexGrow: 1 }}>
           Tasks
@@ -259,12 +256,22 @@ function TasksHeader() {
           add task
         </Button>
       </Stack>
-      <Stack direction="row">
-        <Box sx={{ width: "100%" }}>
-          <Chip avatar={<InsertChartOutlinedIcon />} label="12" />
-        </Box>
+      <TextField
+        placeholder="Search task"
+        fullWidth
+        InputProps={{
+          endAdornment: (
+            <InputAdornment>
+              <SearchOutlinedIcon />
+            </InputAdornment>
+          )
+        }}
+      />
+      <Stack direction="row" spacing={2}>
+        <Chip label="12" color="info" icon={<InsertChartOutlinedIcon />} />
+        <Chip label="8" color="success" icon={<TaskAltOutlinedIcon />} />
+        <Chip label="4" color="error" icon={<UnpublishedOutlinedIcon />} />
       </Stack>
-      <LinearProgressWithLabel color="success" value={75} />
     </Stack>
   );
 }
@@ -387,13 +394,13 @@ function DashboardContent() {
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={4} lg={4}>
-              <Stack spacing={2}>
+              <Stack rowGap={2}>
                 <ActivitiesHeader />
                 <ListActivities activities={activities} />
               </Stack>
             </Grid>
             <Grid item xs={12} md={8} lg={8}>
-              <Stack spacing={2}>
+              <Stack rowGap={2}>
                 <ActivityDetails />
                 <TasksHeader />
                 <ListTasks tasks={tasks} />
